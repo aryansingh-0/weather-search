@@ -17,11 +17,11 @@ let wind;
 let windInfo=document.querySelector('.windInfo');
 let weatherInfo=document.querySelector('.weatherInfo');
 let humidityInfo=document.querySelector('.humidityInfo');
-let image = document.querySelector('.visual');
-let reading = document.querySelector('.tempReading');
-let cityInput = document.querySelector('.input-box');
-let inputBtn = document.querySelector('.input-btn');
-let background = document.querySelector('.weatherData');
+const image = document.querySelector('.visual');
+const reading = document.querySelector('.tempReading');
+const cityInput = document.querySelector('.input-box');
+const inputBtn = document.querySelector('.input-btn');
+const background = document.querySelector('.weatherData');
 
 function findWeather(weather) {
     if (weather === 'clear sky') {
@@ -49,7 +49,7 @@ function findWeather(weather) {
 
 
 function detectScreenSize() {
-    const screenWidth = window.innerWidth;
+    const screenWidth = globalThis.innerWidth;
     if (screenWidth <= 900) { inputBtn.addEventListener('click', function() {
         city = cityInput.value.trim();
     
@@ -57,17 +57,17 @@ function detectScreenSize() {
     
         const inform = async () => {
             try {
-                let response = await fetch(url);
+                const response = await fetch(url);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                let data = await response.json();
+                const data = await response.json();
                 temperature = (data.main.temp - 273).toFixed(2);
                 reading.innerHTML = `${temperature}<sup>°C</sup>`;
                 humidity = data.main.humidity;
                 weather = data.weather[0].description;
                 wind = data.wind.speed;
-                let imageUrl = findWeather(weather);
+                const imageUrl = findWeather(weather);
                 background.style.backgroundImage = imageUrl;
                 humidityInfo.innerHTML= `${humidity} %`;
                 weatherInfo.innerHTML=weather;
@@ -100,7 +100,7 @@ function detectScreenSize() {
                     humidity = data.main.humidity;
                     weather = data.weather[0].description;
                     wind = data.wind.speed;
-                    let imageUrl = findWeather(weather);
+                    const imageUrl = findWeather(weather);
                     image.style.backgroundImage = imageUrl;
                     humidityInfo.innerHTML= `${humidity} %`;
                     weatherInfo.innerHTML=weather;
