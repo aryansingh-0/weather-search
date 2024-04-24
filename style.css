@@ -1,0 +1,213 @@
+*{
+   padding: 0%;
+   margin: 0%;
+
+
+}
+.header {
+    position: absolute;
+    display: flex;
+  
+  width: 100%;
+    z-index: 2;
+}
+.header h1{
+    margin:  1vmin auto;
+    font-weight: 900;
+    color: rgb(40, 27, 94);
+  
+}
+section{
+    background-image: url("https://www.atlasandboots.com/wp-content/uploads/2019/05/ama-dablam2-most-beautiful-mountains-in-the-world.jpg");
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+    background-size: cover;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.weatherData{
+    height: 75vh;
+    overflow: hidden;
+    width: 40vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+     justify-content: center;
+    position: relative;
+    border-radius: 5vmin;
+    box-shadow: 1vmin 1vmin 6vmin -1vmin rgb(37, 36, 35);
+    backdrop-filter: blur(3vmin);
+}
+
+
+.inputLocation{
+    display: flex;
+    height:10vmin ;
+    position: relative;
+    border-radius: 25vmin;
+    width: 80%;
+    background-color: aliceblue;
+}
+input{
+    height: 10vmin;
+    width: 80%;
+    background-color: transparent;
+    border: 0px solid;
+    font-size: 5vmin;
+    text-align: center;
+   padding-left: 5vmin;
+   padding-right: 3vmin;
+    
+
+}
+
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.input-btn{
+    position: absolute;
+    top: 2vmin;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 3vmin;
+    height: 7vmin;
+    width: 7vmin;
+    
+
+    right: 2vmax;
+    transition: background-color 0.3s , color 0.3s;
+
+}
+.input-btn:hover{
+    background-color: rgb(239, 184, 56);
+    color: white;
+    
+}
+
+
+.temp{
+    height: 40%;
+    text-align: center;
+    padding-top: 5vmin;
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(255, 255, 255);
+}
+.temp h1{
+    font-size: 20vmin;
+}
+sup{
+   vertical-align: 200%;
+  font-size: 5vmin;
+}
+
+.visual{
+    height: 75vh;
+    width: 40vw;
+    overflow: hidden;
+    background-image: url(https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3NneWg4N2FtOW9jdzB2djlqMDBkNGVlYmx2Y2Nyd3JhczdtanUzYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VseXvvxwowwCc/giphy.gif) ,url(https://static.vecteezy.com/system/resources/thumbnails/010/332/945/small_2x/colorful-sunset-sky-in-twilight-time-photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+   background-blend-mode: screen;
+    background-position: center;
+    border-radius: 5vmin;
+    box-shadow: 1vmin 1vmin 6vmin -1vmin rgb(37, 36, 35);
+     backdrop-filter: blur(3vmin);
+}
+.more-info{
+    height: 20%;
+    margin-top: -2vmin;
+    width: 80%;
+    color: aliceblue;
+}
+
+.more-info h4{
+  font-size: 2vmax;
+  margin-top: 0.5vmax;
+  color: rgb(255, 250, 118);
+}
+
+.more-info span{
+    margin-left: 0.5vmax;
+    font-size: 2vmax;
+    color:rgb(255, 255, 255);
+    
+}
+.weatherInfo{
+    text-transform: capitalize;
+}
+.visual h3{
+    margin: 1vmax auto ;
+    font-weight: 900;
+    font-size: 10vmin;
+    color: rgba(255, 255, 255, 0.668);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+@media only screen and (max-width: 900px) {
+    body{
+        background-color: antiquewhite;
+    }
+    .background{
+        background-image: unset;
+        
+    }
+    .weatherData{
+        height: 60%;
+        display: flex;
+       align-items: center;
+       flex-direction: column;
+        justify-content: center;
+        background-image: url("https://www.atlasandboots.com/wp-content/uploads/2019/05/ama-dablam2-most-beautiful-mountains-in-the-world.jpg");
+        background-blend-mode: color-burn;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 70vmin;
+        background-color: rgba(0, 0, 0, 0.281);
+
+    }
+    .visual{
+        display: none;
+    }
+    
+    .inputLocation{
+        height: 10vmin;
+        width: 80%;
+        border-radius: 2vmax;
+        position: relative;
+        border: 2px solid black;
+        background-color: rgba(240, 248, 255, 0.679);
+        align-items: center;
+    }
+    .input-box{
+        height: 15vmin;
+        margin-right: 10vmin ;
+      
+       
+    }
+    .input-btn{
+        height: 62%;
+        margin-right: -4vmin;
+        width:25% ;
+        font-size: 6vmin;
+    }
+    .temp h1{
+        font-size: 20vmin;
+    }
+    .input-btn:hover{
+        background-color:transparent;
+        color:black;
+        
+    }
+    sup{
+        vertical-align: 200%;
+       font-size: 5vmin;
+     }
+  }
