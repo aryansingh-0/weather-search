@@ -30,10 +30,10 @@ function findWeather(weather) {
     if (weather === 'few clouds' || weather === 'scattered clouds' || weather === 'broken clouds') {
         return `url(${images.cloud})`;
     }
-    if (weather === 'shower rain' || weather === 'rain') {
+    if (weather === 'shower rain' || weather === 'rain' || weather ==='heavy intensity rain') {
         return `url(${images.rain})`;
     }
-    if (weather === 'thunderstorm') {
+    if (weather === 'thunderstorm' || weather === 'thunderstorm with light rain') {
         return `url(${images.thunder})`;
     }
     if (weather === 'snow') {
