@@ -14,9 +14,9 @@ let temperature;
 let humidity;
 let weather;
 let wind;
-let windInfo = document.querySelector('.windInfo');
-let weatherInfo = document.querySelector('.weatherInfo');
-let humidityInfo = document.querySelector('.humidityInfo');
+let windInfo=document.querySelector('.windInfo');
+let weatherInfo=document.querySelector('.weatherInfo');
+let humidityInfo=document.querySelector('.humidityInfo');
 const image = document.querySelector('.visual');
 const reading = document.querySelector('.tempReading');
 const cityInput = document.querySelector('.input-box');
@@ -24,60 +24,98 @@ const inputBtn = document.querySelector('.input-btn');
 const background = document.querySelector('.weatherData');
 
 function findWeather(weather) {
-    if (weather.includes('clear sky')) {
-        return `url(${images.sky})`;
-    } else if (weather.includes('clouds')) {
-        return `url(${images.cloud})`;
-    } else if (weather.includes('rain')) {
-        return `url(${images.rain})`;
-    } else if (weather.includes('thunderstorm')) {
-        return `url(${images.thunder})`;
-    } else if (weather.includes('snow')) {
-        return `url(${images.cold})`;
-    } else if (weather.includes('haze')) {
-        return `url(${images.haze})`;
-    } else {
-        return `url(${images.unknown})`;
+    if (weather === 'clear sky') {
+        return url(${images.sky});
     }
+    if (weather === 'few clouds' || weather === 'scattered clouds' || weather === 'broken clouds') {
+        return url(${images.cloud});
+    }
+    if (weather === 'shower rain' || weather === 'rain' || weather ==='heavy intensity rain') {
+        return url(${images.rain});
+    }
+    if (weather === 'thunderstorm' || weather === 'thunderstorm with light rain') {
+        return url(${images.thunder});
+    }
+    if (weather === 'snow') {
+        return url(${images.cold});
+    }
+    if (weather === 'haze') {
+        return url(${images.haze});
+    }
+    return url(${images.unknown});
 }
 
-inputBtn.addEventListener('click', function() {
-    city = cityInput.value.trim();
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
-    const inform = async () => {
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            temperature = (data.main.temp - 273.15).toFixed(2);
-            reading.innerHTML = `${temperature}<sup>°C</sup>`;
-            humidity = data.main.humidity;
-            weather = data.weather[0].description;
-            wind = data.wind.speed;
-            const imageUrl = findWeather(weather);
-            background.style.backgroundImage = imageUrl;
-            humidityInfo.innerHTML = `${humidity} %`;
-            weatherInfo.innerHTML = weather;
-            windInfo.innerHTML = `${wind} m/s`;
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
-    inform();
-});
-
-detectScreenSize();
 
 function detectScreenSize() {
     const screenWidth = globalThis.innerWidth;
-    if (screenWidth <= 900) {
-        background.style.backgroundImage = null;
+    if (screenWidth <= 900) { inputBtn.addEventListener('click', function() {
+        city = cityInput.value.trim();
+    
+        const url = https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey};
+    
+        const inform = async () => {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                temperature = (data.main.temp - 273).toFixed(2);
+                reading.innerHTML = ${temperature}<sup>°C</sup>;
+                humidity = data.main.humidity;
+                weather = data.weather[0].description;
+                wind = data.wind.speed;
+                const imageUrl = findWeather(weather);
+                background.style.backgroundImage = imageUrl;
+                humidityInfo.innerHTML= ${humidity} %;
+                weatherInfo.innerHTML=weather;
+                windInfo.innerHTML=${wind} m/s;
+               
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+    
+        inform();
+    });
+    
+    
     } else {
-        image.style.backgroundImage = null;
+        inputBtn.addEventListener('click', function() {
+            city = cityInput.value;
+        
+            const url = https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey};
+        
+            const inform = async () => {
+                try {
+                    let response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    let data = await response.json();
+                    temperature = (data.main.temp - 273).toFixed(2);
+                    reading.innerHTML = ${temperature}<sup>°C</sup>;
+                    humidity = data.main.humidity;
+                    weather = data.weather[0].description;
+                    wind = data.wind.speed;
+                    const imageUrl = findWeather(weather);
+                    image.style.backgroundImage = imageUrl;
+                    humidityInfo.innerHTML= ${humidity} %;
+                    weatherInfo.innerHTML=weather;
+                    windInfo.innerHTML=${wind} m/s;
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            };
+        
+            inform();
+        });
+        
+        
     }
+   
 }
+
+detectScreenSize();
