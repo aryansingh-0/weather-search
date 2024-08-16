@@ -17,61 +17,61 @@ let wind;
 let windInfo=document.querySelector('.windInfo');
 let weatherInfo=document.querySelector('.weatherInfo');
 let humidityInfo=document.querySelector('.humidityInfo');
-const image = document.querySelector('.visual');
-const reading = document.querySelector('.tempReading');
-const cityInput = document.querySelector('.input-box');
-const inputBtn = document.querySelector('.input-btn');
-const background = document.querySelector('.weatherData');
+let image = document.querySelector('.visual');
+let reading = document.querySelector('.tempReading');
+let cityInput = document.querySelector('.input-box');
+let inputBtn = document.querySelector('.input-btn');
+let background = document.querySelector('.weatherData');
 
 function findWeather(weather) {
     if (weather === 'clear sky') {
-        return url(${images.sky});
+        return `url(${images.sky})`;
     }
     if (weather === 'few clouds' || weather === 'scattered clouds' || weather === 'broken clouds') {
-        return url(${images.cloud});
+        return `url(${images.cloud})`;
     }
-    if (weather === 'shower rain' || weather === 'rain' || weather ==='heavy intensity rain') {
-        return url(${images.rain});
+    if (weather === 'shower rain' || weather === 'rain') {
+        return `url(${images.rain})`;
     }
-    if (weather === 'thunderstorm' || weather === 'thunderstorm with light rain') {
-        return url(${images.thunder});
+    if (weather === 'thunderstorm') {
+        return `url(${images.thunder})`;
     }
     if (weather === 'snow') {
-        return url(${images.cold});
+        return `url(${images.cold})`;
     }
     if (weather === 'haze') {
-        return url(${images.haze});
+        return `url(${images.haze})`;
     }
-    return url(${images.unknown});
+    return `url(${images.unknown})`;
 }
 
 
 
 
 function detectScreenSize() {
-    const screenWidth = globalThis.innerWidth;
+    const screenWidth = window.innerWidth;
     if (screenWidth <= 900) { inputBtn.addEventListener('click', function() {
         city = cityInput.value.trim();
     
-        const url = https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey};
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
     
         const inform = async () => {
             try {
-                const response = await fetch(url);
+                let response = await fetch(url);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                const data = await response.json();
+                let data = await response.json();
                 temperature = (data.main.temp - 273).toFixed(2);
-                reading.innerHTML = ${temperature}<sup>°C</sup>;
+                reading.innerHTML = `${temperature}<sup>°C</sup>`;
                 humidity = data.main.humidity;
                 weather = data.weather[0].description;
                 wind = data.wind.speed;
-                const imageUrl = findWeather(weather);
+                let imageUrl = findWeather(weather);
                 background.style.backgroundImage = imageUrl;
-                humidityInfo.innerHTML= ${humidity} %;
+                humidityInfo.innerHTML= `${humidity} %`;
                 weatherInfo.innerHTML=weather;
-                windInfo.innerHTML=${wind} m/s;
+                windInfo.innerHTML=`${wind} m/s`;
                
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -86,7 +86,7 @@ function detectScreenSize() {
         inputBtn.addEventListener('click', function() {
             city = cityInput.value;
         
-            const url = https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey};
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
         
             const inform = async () => {
                 try {
@@ -96,15 +96,15 @@ function detectScreenSize() {
                     }
                     let data = await response.json();
                     temperature = (data.main.temp - 273).toFixed(2);
-                    reading.innerHTML = ${temperature}<sup>°C</sup>;
+                    reading.innerHTML = `${temperature}<sup>°C</sup>`;
                     humidity = data.main.humidity;
                     weather = data.weather[0].description;
                     wind = data.wind.speed;
-                    const imageUrl = findWeather(weather);
+                    let imageUrl = findWeather(weather);
                     image.style.backgroundImage = imageUrl;
-                    humidityInfo.innerHTML= ${humidity} %;
+                    humidityInfo.innerHTML= `${humidity} %`;
                     weatherInfo.innerHTML=weather;
-                    windInfo.innerHTML=${wind} m/s;
+                    windInfo.innerHTML=`${wind} m/s`;
                 } catch (error) {
                     console.error('Error fetching data:', error);
                 }
